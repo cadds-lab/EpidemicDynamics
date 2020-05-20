@@ -15,18 +15,18 @@
 ## <https://www.gnu.org/licenses/>.
 
 ## 
-## function [Xh,T,EIHUB,EIHLB,EGHUB,EGHLB]=UACPredictor(n,r,tol)
+## function [Xh,T]=UACDescriptor(n,r,tol)
 ##
 ## Example:
-## [Xh,T,EIHUB,EIHLB,EGHUB,EGHLB]=UACPredictor(9,12,1e-12);
+## [Xh,T]=UACDescriptor(9,12,1e-12);
 
 ## Author: fredy <fredy@HPCLAB>
 ## Created: 2020-03-28
 
-function [Xh,T,EIHUB,EIHLB,EGHUB,EGHLB]=UACPredictor(n,r,tol)
+function [Xh,T]=UACDescriptor(n,r,tol)
 	pkg load io;
-	Xh=xlsread ('COVID19History.xlsx');
-  HNConnect=xlsread ('HNConnect0.xlsx');
+	Xh=xlsread ('COVID19HistoryJoint.xlsx');
+  	%HNConnect=xlsread ('HNConnect0.xlsx');
 	[p,m]=size(Xh);
 	Xh=Xh(1:(p-1),(n+1):(r+1));
 	[p,m]=size(Xh);
@@ -39,14 +39,14 @@ function [Xh,T,EIHUB,EIHLB,EGHUB,EGHLB]=UACPredictor(n,r,tol)
 	T=Xh0\Xh(:,m);
 	T=[[zeros(1,m-2);eye(m-2)] T];
 	T=uh*sh0*vh'*T*(vh/sh0)*uh';
-	EIHUB=Xh(:,1);
-	EGHUB=Xh(:,1);
-	EIHLB=EIHUB;
-	EGHLB=EGHUB;	
-	for k=1:(m-1)
-		EIHUB = [EIHUB (Xh(:,k)>0).*ceil(T*Xh(:,k))];
-		EIHLB = [EIHLB (Xh(:,k)>0).*floor(T*Xh(:,k))];
-		EGHUB = [EGHUB (Xh(:,k)>0).*ceil(T*EGHUB(:,k))];
-		EGHLB = [EGHLB (Xh(:,k)>0).*floor(T*EGHLB(:,k))];	
-	end
+	%EIHUB=Xh(:,1);
+	%EGHUB=Xh(:,1);
+	%EIHLB=EIHUB;
+	%EGHLB=EGHUB;	
+	%for k=1:(m-1)
+	%	EIHUB = [EIHUB (Xh(:,k)>0).*ceil(T*Xh(:,k))];
+	%	EIHLB = [EIHLB (Xh(:,k)>0).*floor(T*Xh(:,k))];
+	%	EGHUB = [EGHUB (Xh(:,k)>0).*ceil(T*EGHUB(:,k))];
+	%	EGHLB = [EGHLB (Xh(:,k)>0).*floor(T*EGHLB(:,k))];	
+	%end
 end

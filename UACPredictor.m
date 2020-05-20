@@ -44,8 +44,9 @@ function [t,x,y,A]=UACPredictor(j,tol,T)
 	for k=1:(T-1)
 		y=[y P*A*P'*y(:,k)];
 	end	
+	subplot(211);
 	plot(t,x(j,:),'k.-',t,y(j,1:m),'r.-');
-	figure;
+	subplot(212);
 	plot(1:T,y(j,:),'b.-');
   	A=P*A*P';
 end
