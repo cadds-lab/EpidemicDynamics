@@ -25,7 +25,6 @@
 
 function [x,A]=UACPredictor(ss,tol)
 	pkg load io;
-	%x=xlsread ('COVID19HNHistory.xlsx');
 	x=xlsread ('COVID19HNHistoryFull.xlsx');
   	[p,m]=size(x);	
 	ss=min([ss m-1]);

@@ -17,32 +17,33 @@
 ## 
 ## function [t,x]=WeightedUACPredictor(W,A0,A1,x0,T)
 ##
-## Example:
-## [x,A0]=UACPredictor(48,1e-10);
-## [x,A1]=UACDescriptor(48);
-## W0=UACWeight(A0,A1,x(:,46:49));
-## W1=UACWeight(A0,A1,x(:,47:49));
-## W2=UACWeight(A0,A1,x(:,48:49));
-## [t,y0]=WeightedUACPredictor(W0,A0,A1,x(:,48),25);
-## [t,y1]=WeightedUACPredictor(W1,A0,A1,x(:,48),25);
-## [t,y2]=WeightedUACPredictor(W2,A0,A1,x(:,48),25);
-## W=UACWeightedShooting(x(:,[48 49 72 73]),y0(:,[1 2 24 25]),...
-## y1(:,[1 2 24 25]),y2(:,[1 2 24 25]));
-## yt=W*[y0;y1;y2];
-## subplot(311);
-## j=6;plot([0 1 23 24],x(j,[48 49 72 73]),'c.','markersize',...
-## 16,t,y0(j,:),'r.-',t,y2(j,:),'b.-',t,y1(j,:),'g.-',t,...
-## yt(j,:),'k.-');
-## subplot(312);
-## j=8;plot([0 1 23 24],x(j,[48 49 72 73]),'c.','markersize',...
-## 16,t,y0(j,:),'r.-',t,y2(j,:),'b.-',t,y1(j,:),'g.-',t,...
-## yt(j,:),'k.-');
-## subplot(313);
-## j=19;plot([0 1 23 24],x(j,[48 49 72 73]),'c.','markersize',...
-## 16,t,y0(j,:),'r.-',t,y2(j,:),'b.-',t,y1(j,:),'g.-',t,...
-## yt(j,:),'k.-');
-
-
+##  Example:
+##  [x,A0]=UACPredictor(72,1e-10);
+##  [x,A1]=UACDescriptor(72);
+##  W0=UACWeight(A0,A1,x(:,70:73));
+##  W1=UACWeight(A0,A1,x(:,71:73));
+##  W2=UACWeight(A0,A1,x(:,72:73));
+##  [t,y0]=WeightedUACPredictor(W0,A0,A1,x(:,72),16);
+##  [t,y1]=WeightedUACPredictor(W1,A0,A1,x(:,72),16);
+##  [t,y2]=WeightedUACPredictor(W2,A0,A1,x(:,72),16);
+##  W=UACWeightedShooting(x(:,[72 73 88 89]),y0(:,[1 2 15 16]),...
+##  y1(:,[1 2 15 16]),y2(:,[1 2 15 16]));
+##  yt=W*[y0;y1;y2];
+##  subplot(311);
+##  j=6;plot([0 1 14 15],x(j,[72 73 88 89]),'c.','markersize',...
+##  16,t,y0(j,:),'r.-',t,y2(j,:),'b.-',t,y1(j,:),'g.-',t,...
+##  yt(j,:),'k.-');
+##  axis tight
+##  subplot(312);
+##  j=8;plot([0 1 14 15],x(j,[72 73 88 89]),'c.','markersize',...
+##  16,t,y0(j,:),'r.-',t,y2(j,:),'b.-',t,y1(j,:),'g.-',t,...
+##  yt(j,:),'k.-');
+##  axis tight
+##  subplot(313);
+##  j=19;plot([0 1 14 15],x(j,[72 73 88 89]),'c.','markersize',...
+##  16,t,y0(j,:),'r.-',t,y2(j,:),'b.-',t,y1(j,:),'g.-',t,...
+##  yt(j,:),'k.-');
+##  axis tight
 
 ## Author: fredy <fredy@HPCLAB>
 ## Created: 2020-03-28

@@ -25,7 +25,6 @@
 
 function [x,A]=UACDescriptor(ss)
 	pkg load io;
-	%x=xlsread ('COVID19HNHistory.xlsx');
 	x=xlsread ('COVID19HNHistoryFull.xlsx');
   	K=xlsread ('HNConnect0.xlsx');
 	[p,m]=size(x);
